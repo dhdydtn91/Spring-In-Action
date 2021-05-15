@@ -1,4 +1,4 @@
-package tacos;
+package tacos.web;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,6 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import tacos.Ingredient;
+import tacos.Order;
+import tacos.Taco;
 import tacos.data.IngredientRepository;
 import tacos.data.TacoRepository;
 
@@ -66,7 +69,7 @@ public class DesignTacoController {
             return "design";
         }
         Taco saved = tacoRepository.save(design);
-        order.addDesign(design);
+        order.addDesign(saved);
         return "redirect:/orders/current";
     }
 }
